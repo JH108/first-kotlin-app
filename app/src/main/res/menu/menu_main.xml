@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.notekeeper.MainActivity">
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_baseline_arrow_back_24"
+        android:orderInCategory="100"
+        android:title="@string/action_back"
+        app:showAsAction="withText|ifRoom" />
+    <item
+        android:id="@+id/action_next"
+        android:icon="@drawable/ic_baseline_arrow_forward_24"
+        android:orderInCategory="101"
+        android:title="@string/action_next"
+        app:showAsAction="withText|ifRoom" />
+</menu>
