@@ -3,6 +3,7 @@ package com.example.notekeeper
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Button
@@ -16,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
  */
 class FirstFragment : Fragment() {
     private var notePosition = POSITION_NOT_SET
+    private var tag2 = this::class.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,10 +62,14 @@ class FirstFragment : Fragment() {
         if (notePosition != POSITION_NOT_SET)
             displayNote()
         else {
-            val newNote = NoteInfo()
-            DataManager.notes.add(newNote);
-            notePosition = DataManager.notes.lastIndex
+            createNewNote()
         }
+    }
+
+    private fun createNewNote() {
+        val newNote = NoteInfo()
+        DataManager.notes.add(newNote);
+        notePosition = DataManager.notes.lastIndex
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -100,7 +106,8 @@ class FirstFragment : Fragment() {
     }
 
     private fun moveBack() {
-        if (notePosition > 0)
+        val minimumNoteIndex = 0
+        if (notePosition > minimumNoteIndex)
             --notePosition
             displayNote()
             activity?.invalidateOptionsMenu()
@@ -129,6 +136,8 @@ class FirstFragment : Fragment() {
         val note = DataManager.notes[notePosition]
         noteTitleText.setText(note.title)
         noteBodyText.setText(note.body)
+
+        Log.i(tag2, "Displaying note for position $notePosition")
 
         val coursePosition = DataManager.courses.values.indexOf(note.course)
 
