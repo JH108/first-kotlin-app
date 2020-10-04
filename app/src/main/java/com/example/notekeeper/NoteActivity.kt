@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.fragment_first.*
 
-class MainActivity : AppCompatActivity() {
+class NoteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
