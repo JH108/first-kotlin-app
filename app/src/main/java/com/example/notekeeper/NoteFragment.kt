@@ -15,7 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class FirstFragment : Fragment() {
+class NoteFragment : Fragment() {
     private var notePosition = POSITION_NOT_SET
     private var tag2 = this::class.simpleName
 
