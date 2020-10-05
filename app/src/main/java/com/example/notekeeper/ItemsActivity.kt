@@ -13,8 +13,6 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.content_note_list.*
 
 class ItemsActivity : AppCompatActivity() {
 
@@ -30,9 +28,6 @@ class ItemsActivity : AppCompatActivity() {
         fab.setOnClickListener { view ->
             startActivity(Intent(this, NoteActivity::class.java))
         }
-
-        listItems.layoutManager = LinearLayoutManager(this)
-        listItems.adapter = NoteRecyclerAdapter(this, DataManager.notes)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -57,10 +52,5 @@ class ItemsActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        listItems.adapter?.notifyDataSetChanged()
     }
 }
