@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import org.junit.Test
 

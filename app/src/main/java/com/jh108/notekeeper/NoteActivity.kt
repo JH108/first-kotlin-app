@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar

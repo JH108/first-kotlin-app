@@ -1,7 +1,6 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import android.support.test.runner.AndroidJUnit4
-import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 import android.support.test.espresso.Espresso.*
@@ -10,8 +9,6 @@ import org.hamcrest.Matchers.*
 import android.support.test.espresso.action.ViewActions.*
 import android.support.test.rule.ActivityTestRule
 import org.junit.Rule
-import android.support.test.espresso.Espresso.pressBack
-import android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import android.support.test.espresso.assertion.ViewAssertions.*
 
 @RunWith(AndroidJUnit4::class)

@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 data class CourseInfo (val courseId: String, val title: String) {
     override fun toString(): String {

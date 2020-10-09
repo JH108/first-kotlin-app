@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import android.content.Context
 import android.content.Intent

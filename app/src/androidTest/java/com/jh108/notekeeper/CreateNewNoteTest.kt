@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import android.support.test.runner.AndroidJUnit4
 import org.junit.Assert.*

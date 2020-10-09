@@ -1,8 +1,7 @@
-package com.jwhh.notekeeper
+package com.jh108.notekeeper
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
