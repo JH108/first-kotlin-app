@@ -31,8 +31,7 @@ class ItemsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
         }
 
-        listItems.layoutManager = noteLayoutManager
-        listItems.adapter = noteRecyclerAdapter
+        displayNotes()
 
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
@@ -70,7 +69,7 @@ class ItemsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_notes -> {
-                handleSelection("Notes")
+                displayNotes()
             }
             R.id.nav_courses -> {
                 handleSelection("Courses")
@@ -89,5 +88,12 @@ class ItemsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     private fun handleSelection(message: String) {
         Snackbar.make(listItems, message, Snackbar.LENGTH_LONG).show()
+    }
+
+    private fun displayNotes() {
+        listItems.layoutManager = noteLayoutManager
+        listItems.adapter = noteRecyclerAdapter
+
+        nav_view.menu.findItem(R.id.nav_notes).isChecked = true
     }
 }
