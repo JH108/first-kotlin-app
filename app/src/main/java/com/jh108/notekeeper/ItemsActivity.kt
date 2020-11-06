@@ -3,6 +3,7 @@ package com.jh108.notekeeper
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -52,8 +53,10 @@ class ItemsActivity : AppCompatActivity(),
 
         fab.setOnClickListener { view ->
             startActivity(Intent(this, NoteActivity::class.java))
-
         }
+
+        if (savedInstanceState != null)
+            viewModel.restoreState(savedInstanceState)
 
         handleDisplaySelection(viewModel.navDrawerDisplaySelection)
 
@@ -98,6 +101,11 @@ class ItemsActivity : AppCompatActivity(),
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        viewModel.saveState(outState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

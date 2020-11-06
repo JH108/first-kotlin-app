@@ -25,6 +25,19 @@ object DataManager {
         return null
     }
 
+    fun loadNotes(vararg noteIds: Int): List<NoteInfo> {
+        val noteList: List<NoteInfo>
+
+        if (noteIds.isEmpty()) {
+            noteList = notes
+        } else {
+            noteList = ArrayList<NoteInfo>(noteIds.size)
+            for (noteId in noteIds)
+                noteList.add(notes[noteId])
+        }
+        return noteList
+    }
+
     fun initializeCourses() {
         var course = CourseInfo("android_intents", "Android Programming with Intents")
         courses.set(course.courseId, course)
@@ -72,6 +85,17 @@ object DataManager {
         note = NoteInfo(course, "Serialization",
                 "Remember to include SerialVersionUID to assure version compatibility")
         notes.add(note)
+    }
+
+    fun noteIdsAsIntArray(recentlyViewedNotes: ArrayList<NoteInfo>): IntArray? {
+        val noteIds = IntArray(recentlyViewedNotes.size)
+
+        for (note in recentlyViewedNotes) {
+            val noteIndex = notes.indexOf(note)
+            noteIds[noteIndex] = noteIndex
+        }
+
+        return noteIds
     }
 
 }
