@@ -15,19 +15,7 @@ class NoteActivity : AppCompatActivity() {
     private val tag = this::class.simpleName
     private var notePosition = POSITION_NOT_SET
 
-    val locManager = PseudoLocationManager(this) {lat, lon ->
-        Log.d(tag, "Location Callback Lat:${lat}, Lon:${lon}")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        locManager.start()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        locManager.stop()
-    }
+    val noteGetTogetherHelper = NoteGetTogetherHelper(this, lifecycle)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,14 +125,3 @@ class NoteActivity : AppCompatActivity() {
         note.course = spinnerCourses.selectedItem as CourseInfo
     }
 }
-
-
-
-
-
-
-
-
-
-
-
