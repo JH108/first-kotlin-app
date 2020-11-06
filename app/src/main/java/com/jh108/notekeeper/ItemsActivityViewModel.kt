@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.os.Bundle
 
 class ItemsActivityViewModel : ViewModel() {
+    var isNewlyCreated = true
     var navDrawerDisplaySelection = R.id.nav_notes
     val maxRecentlyViewedNotes = 5
     val navDrawerDisplaySelectionStateName = "com.jh108.notekeeper.ItemsActivityViewModel.navDrawerDisplaySelectionStateName"

@@ -25,7 +25,12 @@ object DataManager {
         return null
     }
 
+    fun loadNote(noteId: Int) = notes[noteId]
+
+    fun isLastNoteId(noteId: Int) = noteId == notes.lastIndex
+
     fun loadNotes(vararg noteIds: Int): List<NoteInfo> {
+        simulateLoadDelay()
         val noteList: List<NoteInfo>
 
         if (noteIds.isEmpty()) {
@@ -89,13 +94,14 @@ object DataManager {
 
     fun noteIdsAsIntArray(recentlyViewedNotes: ArrayList<NoteInfo>): IntArray? {
         val noteIds = IntArray(recentlyViewedNotes.size)
-
-        for (note in recentlyViewedNotes) {
-            val noteIndex = notes.indexOf(note)
-            noteIds[noteIndex] = noteIndex
-        }
-
+        for (index in 0..noteIds.lastIndex)
+            noteIds[index] = DataManager.idOfNote(recentlyViewedNotes[index])
         return noteIds
     }
 
+    fun idOfNote(note: NoteInfo) = notes.indexOf(note)
+
+    private fun simulateLoadDelay() {
+        Thread.sleep(1000)
+    }
 }
