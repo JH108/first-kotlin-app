@@ -16,13 +16,7 @@
         <activity
             android:name="com.jh108.notekeeper.NoteListActivity"
             android:label="NoteKeeper"
-            android:theme="@style/AppTheme.NoActionBar">
-
-
-
-
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.jh108.notekeeper.ItemsActivity"
             android:label="@string/title_activity_items"
