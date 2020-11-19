@@ -16,12 +16,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Note text"
+        android:hint="@string/note_text"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/textNoteTitle"
@@ -31,11 +32,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:hint="Note title"
+        android:hint="@string/note_title"
         android:inputType="textMultiLine"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCourses" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCourses"
+        android:importantForAutofill="no" />
 
     <Spinner
         android:id="@+id/spinnerCourses"

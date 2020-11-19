@@ -1,5 +1,6 @@
 package com.jh108.notekeeper
 
+import android.animation.AnimatorInflater
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.android.synthetic.main.app_bar_items.*
 import kotlinx.android.synthetic.main.content_items.*
@@ -30,7 +32,7 @@ class ItemsActivity : AppCompatActivity(),
     }
 
     private val courseLayoutManager by lazy {
-        GridLayoutManager(this, 2)
+        GridLayoutManager(this, resources.getInteger(R.integer.course_grid_span))
     }
     private val courseRecyclerAdapter by lazy {
         CourseRecyclerAdapter(this, DataManager.courses.values.toList())
@@ -135,10 +137,11 @@ class ItemsActivity : AppCompatActivity(),
                 viewModel.navDrawerDisplaySelection = item.itemId
             }
             R.id.nav_share -> {
-                handleSelection("Don't you think you've shared enough")
+                handleSelection(R.string.nav_share_message)
             }
             R.id.nav_send -> {
-                handleSelection("Send")
+                val message = getString(R.string.nav_how_many_message_format, DataManager.notes.size, DataManager.courses.size)
+                Snackbar.make(listItems, message, Snackbar.LENGTH_LONG).show()
             }
         }
 
@@ -164,7 +167,41 @@ class ItemsActivity : AppCompatActivity(),
         viewModel.addToRecentlyViewedNotes(note)
     }
 
-    private fun handleSelection(message: String) {
-        Snackbar.make(listItems, message, Snackbar.LENGTH_LONG).show()
+    private fun handleSelection(stringId: Int) {
+        Snackbar.make(listItems, stringId, Snackbar.LENGTH_LONG).show()
     }
+
+//    fun rotateAnimation(view: View) {
+//
+//        val rotateAnimator = AnimatorInflater.loadAnimator(this, R.animator.rotate)
+//        rotateAnimator?.apply {
+//            setTarget(targetImage)
+//            start()
+//        }
+//    }
+//
+//    fun scaleAnimation(view: View) {
+//
+//        val scaleAnimator = AnimatorInflater.loadAnimator(this, R.animator.scale)
+//        scaleAnimator?.apply {
+//            setTarget(targetImage)
+//            start()
+//        }
+//    }
+//
+//    fun translateAnimation(view: View) {
+//
+//        val translateAnimator = AnimatorInflater.loadAnimator(this, R.animator.translate)
+//        translateAnimator.apply {
+//            setTarget(targetImage)
+//            start()
+//        }
+//    }
+//
+//    fun fadeAnimation(view: View) {
+//
+//        val fadeAnimator = AnimatorInflater.loadAnimator(this, R.animator.alpha)
+//        fadeAnimator.setTarget(targetImage)
+//        fadeAnimator.start()
+//    }
 }

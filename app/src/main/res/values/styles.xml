@@ -22,4 +22,14 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="NoteTitle" parent="@android:style/TextAppearance.Material.Small">
+        <item name="android:textColor">@color/subtext</item>
+    </style>
+
+    <style name="AddFAB" parent="@style/Widget.Design.FloatingActionButton">
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="srcCompat">@drawable/ic_add_white_24dp</item>
+        <item name="android:backgroundTint">@color/subtext</item>
+    </style>
+
 </resources>
