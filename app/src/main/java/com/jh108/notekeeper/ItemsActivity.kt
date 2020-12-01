@@ -1,10 +1,8 @@
 package com.jh108.notekeeper
 
-import android.animation.AnimatorInflater
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -14,10 +12,10 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import kotlinx.android.synthetic.main.activity_items.*
 import kotlinx.android.synthetic.main.app_bar_items.*
 import kotlinx.android.synthetic.main.content_items.*
+import com.jh108.notekeeper.animations.*
 
 class ItemsActivity : AppCompatActivity(),
         NavigationView.OnNavigationItemSelectedListener,
@@ -53,7 +51,7 @@ class ItemsActivity : AppCompatActivity(),
         setContentView(R.layout.activity_items)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
+        fab?.setOnClickListener { view ->
             startActivity(Intent(this, NoteActivity::class.java))
         }
 
@@ -132,6 +130,7 @@ class ItemsActivity : AppCompatActivity(),
         when (item.itemId) {
             R.id.nav_notes,
             R.id.nav_courses,
+            R.id.nav_animations,
             R.id.nav_recent_notes -> {
                 handleDisplaySelection(item.itemId)
                 viewModel.navDrawerDisplaySelection = item.itemId
@@ -160,7 +159,14 @@ class ItemsActivity : AppCompatActivity(),
             R.id.nav_recent_notes -> {
                 displayRecentlyViewedNotes()
             }
+            R.id.nav_animations -> {
+                launchAnimationActivity()
+            }
         }
+    }
+
+    private fun launchAnimationActivity() {
+        startActivity(Intent(this, AnimationActivity::class.java))
     }
 
     override fun onNoteSelected(note: NoteInfo) {
@@ -170,38 +176,4 @@ class ItemsActivity : AppCompatActivity(),
     private fun handleSelection(stringId: Int) {
         Snackbar.make(listItems, stringId, Snackbar.LENGTH_LONG).show()
     }
-
-//    fun rotateAnimation(view: View) {
-//
-//        val rotateAnimator = AnimatorInflater.loadAnimator(this, R.animator.rotate)
-//        rotateAnimator?.apply {
-//            setTarget(targetImage)
-//            start()
-//        }
-//    }
-//
-//    fun scaleAnimation(view: View) {
-//
-//        val scaleAnimator = AnimatorInflater.loadAnimator(this, R.animator.scale)
-//        scaleAnimator?.apply {
-//            setTarget(targetImage)
-//            start()
-//        }
-//    }
-//
-//    fun translateAnimation(view: View) {
-//
-//        val translateAnimator = AnimatorInflater.loadAnimator(this, R.animator.translate)
-//        translateAnimator.apply {
-//            setTarget(targetImage)
-//            start()
-//        }
-//    }
-//
-//    fun fadeAnimation(view: View) {
-//
-//        val fadeAnimator = AnimatorInflater.loadAnimator(this, R.animator.alpha)
-//        fadeAnimator.setTarget(targetImage)
-//        fadeAnimator.start()
-//    }
 }
